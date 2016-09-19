@@ -61,4 +61,5 @@ if [ ! -x  /opt/mychat ]; then
     echo -e '\E[37;40m'"\033[1m==>Run mychat\033[0m"
     tput sgr0
     sudo npm start
+    echo -e '\E[37;40m'"\033[1m==>Run mychat\033[0m"
 fi
