@@ -33,7 +33,6 @@ jspm_packages
 
 #
 libs/
-css/
 
 # Optional npm cache directory
 .npm
