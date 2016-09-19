@@ -58,16 +58,7 @@ if [ ! -x  /opt/chat ]; then
     cd /opt/chat && sudo npm i
     echo -e '\E[37;40m'"\033[1m==>Install npm modules from front-end\033[0m"
     tput sgr0
-    cd /opt/chat/public && sudo npm i
-    echo -e '\E[37;40m'"\033[1m==>Install -g bower\033[0m"
-    tput sgr0
-    sudo npm install -g bower
-    echo -e '\E[37;40m'"\033[1m==>Install bower modules\033[0m"
-    tput sgr0
-    sudo bower install --allow-root
-    echo -e '\E[37;40m'"\033[1m==>Install -g gulp\033[0m"
-    tput sgr0
-    sudo npm install --global gulp-cli
+
     if [ $isNginx == 0 ]; then
       echo -e '\E[37;40m'"\033[1m==>Install nginx\033[0m"
       tput sgr0
@@ -75,9 +66,15 @@ if [ ! -x  /opt/chat ]; then
       sudo apt-get install -y nginx
     fi
     sudo cp /opt/chat/chat.io /etc/nginx/sites-available/chat.io
+    sudo ln -s /etc/nginx/sites-available/chat.io /etc/nginx/sites-enabled/
     sudo service nginx restart
-    
-    cd /etc/nginx/sites-available/ && cp /etc/nginx/sites-available/default /opt/chat/chat.io
+    sudo cp /opt/chat/mychat /etc/ini.d/
+    sudo update-rc.d mychat defaults
+    sudo service mychat start
+
+
+
+
 
 
 
