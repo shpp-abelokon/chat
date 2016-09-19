@@ -71,29 +71,3 @@ if [ ! -x  /opt/chat ]; then
     sudo cp /opt/chat/mychat /etc/ini.d/
     sudo update-rc.d mychat defaults
     sudo service mychat start
-
-
-
-
-
-
-
-
-
-    if [ $isUnzip == 0 ]; then
-    echo -e '\E[37;40m'"\033[1m==>Install unzip\033[0m"
-    tput sgr0
-    sudo apt-get install -y unzip
-    fi
-    unzip ./master.zip -d /opt/
-    cp /opt/chat-master/* /opt/mychat/
-    sudo rm /opt/master.zip
-    sudo rm -rf /opt/chat-master
-    echo -e '\E[37;40m'"\033[1m==>Install npm modules\033[0m"
-    tput sgr0
-    cd /opt/mychat && npm i
-    echo -e '\E[37;40m'"\033[1m==>Run mychat\033[0m"
-    tput sgr0
-    sudo npm start
-    echo -e '\E[37;40m'"\033[1m==>Install nginx \033[0m"
-fi
